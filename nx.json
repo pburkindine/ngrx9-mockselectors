@@ -1,0 +1,22 @@
+{
+  "npmScope": "ngrx9-mockselectors",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "ngrx9-mockselectors": {
+      "tags": []
+    },
+    "ngrx9-mockselectors-e2e": {
+      "tags": [],
+      "implicitDependencies": ["ngrx9-mockselectors"]
+    }
+  }
+}

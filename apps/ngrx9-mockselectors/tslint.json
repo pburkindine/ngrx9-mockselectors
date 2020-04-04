@@ -1,0 +1,12 @@
+{
+  "extends": "../../tslint.json",
+  "rules": {
+    "directive-selector": [
+      true,
+      "attribute",
+      "ngrx9Mockselectors",
+      "camelCase"
+    ],
+    "component-selector": [true, "element", "ngrx9-mockselectors", "kebab-case"]
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "version": 1,
+  "projects": {
+    "ngrx9-mockselectors": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/ngrx9-mockselectors",
+      "sourceRoot": "apps/ngrx9-mockselectors/src",
+      "prefix": "ngrx9-mockselectors",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/ngrx9-mockselectors",
+            "index": "apps/ngrx9-mockselectors/src/index.html",
+            "main": "apps/ngrx9-mockselectors/src/main.ts",
+            "polyfills": "apps/ngrx9-mockselectors/src/polyfills.ts",
+            "tsConfig": "apps/ngrx9-mockselectors/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/ngrx9-mockselectors/src/favicon.ico",
+              "apps/ngrx9-mockselectors/src/assets"
+            ],
+            "styles": ["apps/ngrx9-mockselectors/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/ngrx9-mockselectors/src/environments/environment.ts",
+                  "with": "apps/ngrx9-mockselectors/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ngrx9-mockselectors:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ngrx9-mockselectors:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ngrx9-mockselectors:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/ngrx9-mockselectors/tsconfig.app.json",
+              "apps/ngrx9-mockselectors/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/ngrx9-mockselectors/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/ngrx9-mockselectors/jest.config.js",
+            "tsConfig": "apps/ngrx9-mockselectors/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/ngrx9-mockselectors/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "ngrx9-mockselectors-e2e": {
+      "root": "apps/ngrx9-mockselectors-e2e",
+      "sourceRoot": "apps/ngrx9-mockselectors-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/ngrx9-mockselectors-e2e/cypress.json",
+            "tsConfig": "apps/ngrx9-mockselectors-e2e/tsconfig.e2e.json",
+            "devServerTarget": "ngrx9-mockselectors:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ngrx9-mockselectors:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/ngrx9-mockselectors-e2e/tsconfig.e2e.json"],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/ngrx9-mockselectors-e2e/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "analytics": "bdd14a43-e770-472e-a0eb-ad945ad871eb"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "ngrx9-mockselectors"
+}
